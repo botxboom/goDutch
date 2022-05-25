@@ -1,93 +1,89 @@
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import {  removeExpense, updateExpense } from '../store/actions/expenseActions';
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { removeExpense, updateExpense } from "../store/actions/expenseActions";
 
-function ExpenseDetail({expense}) {
-    const dispatch = useDispatch();
+function ExpenseDetail({ expense }) {
+  const dispatch = useDispatch();
 
-    const [cliked, setClicked] = useState(false)
+  const [clicked, setClicked] = useState(false);
 
-    const [exp, setExpense] = useState({
-        id: '',
-        expenseType: '',
-        amount: ''
-      });
-      
-    
-    const handleChange = (e) => {
-    setExpense({ ...exp, [e.target.name] : e.target.value })
-    }
-    
+  const [exp, setExpense] = useState({
+    id: "",
+    expenseType: "",
+    amount: "",
+  });
 
-    const onEditHandle = (e) => {
-        setClicked(true)
-        setExpense({
-            id: expense.id,
-            expenseType: expense.expenseType,
-            amount: expense.amount
-        })
-    }
+  const handleChange = (e) => {
+    setExpense({ ...exp, [e.target.name]: e.target.value });
+  };
 
-    const onUpdateHandle = (e) => {
-        setClicked(false)
+  const onEditHandle = (e) => {
+    setClicked(true);
+    setExpense({
+      id: expense.id,
+      expenseType: expense.expenseType,
+      amount: expense.amount,
+    });
+  };
 
-        dispatch(updateExpense(exp))
-    }
-    
+  const onUpdateHandle = (e) => {
+    setClicked(false);
 
-    return (
-        <div className="col s12 m6">
-        <div className="card">
-            {!cliked && <div className="card-content">
-                <span className="card-title">{expense.expenseType}</span>
-                <p>{expense.amount}</p>
-            </div>}
+    dispatch(updateExpense(exp));
+  };
 
-            {cliked && <div>
-                <input
-                    onChange={handleChange}
-                    value={exp.expenseType}
-                    type="text"
-                    name="expenseType"
-                />
+  return (
+    <div className="col s12 m6">
+      <div className="card">
+        {!clicked && (
+          <div className="card-content">
+            <span className="card-title">{expense.expenseType}</span>
+            <p>{expense.amount}</p>
+          </div>
+        )}
 
-                <input
-                    onChange={handleChange}
-                    value={exp.amount}
-                    type="text"
-                    name="amount"
-                    enterKeyHint='amount'
-                />
-            </div>}
-            <div className="card-action">
-            { !cliked && <div><button
-            
-                id='deleteButtonId'
+        {clicked && (
+          <div>
+            <input
+              onChange={handleChange}
+              value={exp.expenseType}
+              type="text"
+              name="expenseType"
+            />
+
+            <input
+              onChange={handleChange}
+              value={exp.amount}
+              type="text"
+              name="amount"
+              enterKeyHint="amount"
+            />
+          </div>
+        )}
+        <div className="card-action">
+          {!clicked && (
+            <div>
+              <button
+                id="deleteButtonId"
                 onClick={() => dispatch(removeExpense(expense.id))}
                 className="btn red"
-            >
+              >
                 Delete
-            </button>
-            <button
-                className="btn blue"
-                onClick={onEditHandle}
-            >
+              </button>
+              <button className="btn blue" onClick={onEditHandle}>
                 edit
-            </button>
-            </div>  
-            }
-            {cliked && <button
-                className="btn green"
-                onClick={onUpdateHandle}
-            >
-                update
-            </button>}
-        
-           
+              </button>
             </div>
+          )}
+          {clicked && (
+            <button className="btn green" onClick={onUpdateHandle}>
+              update
+            </button>
+          )}
         </div>
-        </div>
-    )
+      </div>
+    </div>
+  );
 }
 
-export default ExpenseDetail
+export default ExpenseDetail;

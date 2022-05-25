@@ -1,12 +1,7 @@
-import React from 'react'
+import React from "react";
 
-function NavBar({total}) {
-
-  
-
-  return (
-    <div>{total}</div>
-  )
+function NavBar({ total }) {
+  return <div>{total}</div>;
 }
 
-export default NavBar
+export default NavBar;

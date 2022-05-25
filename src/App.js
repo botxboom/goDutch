@@ -1,9 +1,7 @@
-import React from "react"
-import Homepage from './components/Homepage';
-import 'semantic-ui-css/semantic.min.css';
+import React from "react";
+import Homepage from "./components/Homepage";
 
 function App() {
-
   return (
     <div className="App">
       <Homepage />
