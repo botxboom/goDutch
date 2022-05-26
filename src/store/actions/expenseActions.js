@@ -2,8 +2,8 @@ const addExpense = (expense) => {
   return { type: "ADD_EXPENSE", expense };
 };
 
-const removeExpense = (id) => {
-  return { type: "REMOVE_EXPENSE", id };
+const removeExpense = (expense) => {
+  return { type: "REMOVE_EXPENSE", expense };
 };
 
 const updateExpense = (expense) => {

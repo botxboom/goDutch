@@ -9,14 +9,14 @@ import {
   FormContent,
   FormInput,
   Input,
-} from "./AddExpense.Style";
+} from "./styles/AddExpense.Style";
 import { expenseTypesList } from "../Helpers/Helper";
 
 function AddExpense() {
   const dispatch = useDispatch();
   const [expense, setExpense] = useState({
     id: "",
-    expenseType: "",
+    expenseType: "Travel",
     amount: "",
   });
 
@@ -42,7 +42,6 @@ function AddExpense() {
             name="expenseType"
             onChange={handleChange}
             id="options"
-            defaultValue="Travel"
             value={expense.expenseType}
           >
             {expenseTypesList.map((e) => (
@@ -51,7 +50,14 @@ function AddExpense() {
               </option>
             ))}
           </DropDownSelect>
-          <Input value={expense.amount} name="amount" onChange={handleChange} />
+          <Input
+            value={expense.amount}
+            placeholder="Spent..."
+            name="amount"
+            type="number"
+            onChange={handleChange}
+            required
+          />
         </FormInput>
         <Button>Add</Button>
       </FormContent>

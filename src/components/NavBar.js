@@ -6,7 +6,7 @@ import {
   NavLogo,
   MenuIcon,
   MenuItem,
-} from "./Navbar.Style";
+} from "./styles/Navbar.Style";
 
 function NavBar({ total }) {
   const [click, setClick] = useState(false);
@@ -30,12 +30,12 @@ function NavBar({ total }) {
   return (
     <Nav>
       <NavbarContainer>
-        <NavLogo to="/">goDUTCH</NavLogo>
+        <NavLogo to="/">GoDutch</NavLogo>
         <MenuIcon onClick={handleClick}>
           {click ? <BiX /> : <BiMenu />}
         </MenuIcon>
 
-        <MenuItem>Total Expense: {total} INR</MenuItem>
+        <MenuItem>Total Expenses: {total} INR</MenuItem>
       </NavbarContainer>
     </Nav>
   );

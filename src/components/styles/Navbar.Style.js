@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { BiRestaurant } from "react-icons/bi";
-import { Container } from "../GlobalStyles";
+import { Container } from "../../GlobalStyles";
 
 export const Nav = styled.nav`
   font-size: 18px;
@@ -9,7 +9,7 @@ export const Nav = styled.nav`
   top: 0;
   z-index: 999;
   height: 80px;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: #2f8f9d;
   /* box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.5); */
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.15);
   display: flex;
@@ -26,13 +26,13 @@ export const NavbarContainer = styled(Container)`
 `;
 
 export const NavLogo = styled(Link)`
-  color: #4fc3f7;
+  color: white;
   cursor: pointer;
   display: flex;
   align-items: center;
   text-decoration: none;
   font-size: 2.5rem;
-  font-weight: 800;
+  font-weight: 600;
   transition: all 0.5s ease;
   &:hover {
     transform: scale(1.08);
@@ -60,18 +60,13 @@ export const Menu = styled.ul`
 
 export const MenuItem = styled.li`
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 600;
   font-size: 2.5rem;
-  color: #9e9e9e;
+  color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
   height: 100%;
   transition: all 0.2s ease;
-
-  &:hover {
-    color: #ef6c00;
-    transform: traslateY(-3rem);
-  }
 `;

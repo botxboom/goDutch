@@ -1,12 +1,27 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import editImage from "../images/edit.svg";
+import removeImage from "../images/remove.svg";
+import doneImage from "../images/done.svg";
 import { removeExpense, updateExpense } from "../store/actions/expenseActions";
+import {
+  ActionButton,
+  ListActions,
+  ListCard,
+  ListContainer,
+  ListContent,
+} from "./styles/ExpenseDetails.Style";
+import {
+  DropDownSelect,
+  Form,
+  FormInput,
+  Input,
+} from "./styles/AddExpense.Style";
+import { expenseTypesList } from "../Helpers/Helper";
 
 function ExpenseDetail({ expense }) {
   const dispatch = useDispatch();
-
   const [clicked, setClicked] = useState(false);
-
   const [exp, setExpense] = useState({
     id: "",
     expenseType: "",
@@ -26,63 +41,63 @@ function ExpenseDetail({ expense }) {
     });
   };
 
-  const onUpdateHandle = (e) => {
+  const onSubmitHandle = (e) => {
     setClicked(false);
-
     dispatch(updateExpense(exp));
   };
 
   return (
-    <div className="col s12 m6">
-      <div className="card">
-        {!clicked && (
-          <div className="card-content">
-            <span className="card-title">{expense.expenseType}</span>
-            <p>{expense.amount}</p>
-          </div>
-        )}
-
-        {clicked && (
-          <div>
-            <input
-              onChange={handleChange}
-              value={exp.expenseType}
-              type="text"
-              name="expenseType"
-            />
-
-            <input
-              onChange={handleChange}
-              value={exp.amount}
-              type="text"
-              name="amount"
-              enterKeyHint="amount"
-            />
-          </div>
-        )}
-        <div className="card-action">
-          {!clicked && (
-            <div>
-              <button
-                id="deleteButtonId"
-                onClick={() => dispatch(removeExpense(expense.id))}
-                className="btn red"
-              >
-                Delete
-              </button>
-              <button className="btn blue" onClick={onEditHandle}>
-                edit
-              </button>
-            </div>
+    <>
+      <ListContainer>
+        <ListCard>
+          {clicked ? (
+            <Form onSubmit={onSubmitHandle}>
+              <FormInput>
+                <DropDownSelect
+                  name="expenseType"
+                  onChange={handleChange}
+                  id="options"
+                  defaultValue="Travel"
+                  value={exp.expenseType}
+                >
+                  {expenseTypesList.map((e) => (
+                    <option value={e.value} key={e.key} name="adsf">
+                      {e.text}
+                    </option>
+                  ))}
+                </DropDownSelect>
+                <Input
+                  value={exp.amount}
+                  placeholder="Spent..."
+                  name="amount"
+                  type="number"
+                  onChange={handleChange}
+                  required
+                />
+                <ActionButton>
+                  <img className="done_img" src={doneImage}></img>
+                </ActionButton>
+              </FormInput>
+            </Form>
+          ) : (
+            <>
+              <ListContent>
+                <h3>{expense.expenseType}</h3>
+                <h3>{expense.amount}</h3>
+              </ListContent>
+              <ListActions>
+                <ActionButton onClick={onEditHandle}>
+                  <img className="edit_img" src={editImage}></img>
+                </ActionButton>
+                <ActionButton onClick={() => dispatch(removeExpense(expense))}>
+                  <img className="remove_img" src={removeImage}></img>
+                </ActionButton>
+              </ListActions>
+            </>
           )}
-          {clicked && (
-            <button className="btn green" onClick={onUpdateHandle}>
-              update
-            </button>
-          )}
-        </div>
-      </div>
-    </div>
+        </ListCard>
+      </ListContainer>
+    </>
   );
 }
 

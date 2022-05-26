@@ -3,6 +3,8 @@ import { useSelector } from "react-redux";
 import AddExpense from "./AddExpense";
 import ExpenseList from "./ExpenseList";
 import NavBar from "./NavBar";
+import { PageContainer } from "./styles/AddExpense.Style";
+import { ExpenseDetailCard } from "./styles/ExpenseDetails.Style";
 
 function Homepage() {
   const { expenses, subTotal } = useSelector((store) => store);
@@ -10,8 +12,10 @@ function Homepage() {
   return (
     <>
       <NavBar total={subTotal} />
-      <AddExpense />
-      <ExpenseList expenses={expenses} />
+      <PageContainer>
+        <AddExpense />
+        <ExpenseList expenses={expenses} />
+      </PageContainer>
     </>
   );
 }
