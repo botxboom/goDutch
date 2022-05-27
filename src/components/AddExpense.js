@@ -15,7 +15,7 @@ import { expenseTypesList } from "../Helpers/Helper";
 function AddExpense() {
   const dispatch = useDispatch();
   const [expense, setExpense] = useState({
-    id: "",
+    id: uuidv4(),
     expenseType: "Travel",
     amount: "",
   });

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { BiMenu, BiX } from "react-icons/bi";
 import {
   Nav,
@@ -10,22 +10,7 @@ import {
 
 function NavBar({ total }) {
   const [click, setClick] = useState(false);
-  const [button, setButton] = useState(true);
   const handleClick = () => setClick(!click);
-  const closeMenu = () => setClick(false);
-
-  const showButton = () => {
-    if (window.innerWidth <= 1000) {
-      setButton(false);
-    } else {
-      setButton(true);
-    }
-  };
-
-  useEffect(() => {
-    showButton();
-  }, []);
-  window.addEventListener("resize", showButton);
 
   return (
     <Nav>

@@ -11,13 +11,7 @@ import {
   ListContainer,
   ListContent,
 } from "./styles/ExpenseDetails.Style";
-import {
-  DropDownSelect,
-  Form,
-  FormInput,
-  Input,
-} from "./styles/AddExpense.Style";
-import { expenseTypesList } from "../Helpers/Helper";
+import { Form, FormInput, Input } from "./styles/AddExpense.Style";
 
 function ExpenseDetail({ expense }) {
   const dispatch = useDispatch();
@@ -51,34 +45,27 @@ function ExpenseDetail({ expense }) {
       <ListContainer>
         <ListCard>
           {clicked ? (
-            <Form onSubmit={onSubmitHandle}>
-              <FormInput>
-                <DropDownSelect
-                  name="expenseType"
-                  onChange={handleChange}
-                  id="options"
-                  defaultValue="Travel"
-                  value={exp.expenseType}
-                >
-                  {expenseTypesList.map((e) => (
-                    <option value={e.value} key={e.key} name="adsf">
-                      {e.text}
-                    </option>
-                  ))}
-                </DropDownSelect>
-                <Input
-                  value={exp.amount}
-                  placeholder="Spent..."
-                  name="amount"
-                  type="number"
-                  onChange={handleChange}
-                  required
-                />
-                <ActionButton>
-                  <img className="done_img" src={doneImage}></img>
-                </ActionButton>
-              </FormInput>
-            </Form>
+            <>
+              <ListContent>
+                <h3>{expense.expenseType}</h3>
+              </ListContent>
+
+              <Form onSubmit={onSubmitHandle}>
+                <FormInput>
+                  <Input
+                    value={exp.amount}
+                    placeholder="Spent..."
+                    name="amount"
+                    type="number"
+                    onChange={handleChange}
+                    required
+                  />
+                  <ActionButton>
+                    <img className="done_img" alt="done" src={doneImage}></img>
+                  </ActionButton>
+                </FormInput>
+              </Form>
+            </>
           ) : (
             <>
               <ListContent>
@@ -87,10 +74,14 @@ function ExpenseDetail({ expense }) {
               </ListContent>
               <ListActions>
                 <ActionButton onClick={onEditHandle}>
-                  <img className="edit_img" src={editImage}></img>
+                  <img className="edit_img" alt="edit" src={editImage}></img>
                 </ActionButton>
                 <ActionButton onClick={() => dispatch(removeExpense(expense))}>
-                  <img className="remove_img" src={removeImage}></img>
+                  <img
+                    className="remove_img"
+                    alt="remove"
+                    src={removeImage}
+                  ></img>
                 </ActionButton>
               </ListActions>
             </>
