@@ -18,6 +18,7 @@ function AddExpense() {
     id: uuidv4(),
     expenseType: "Travel",
     amount: "",
+    color: "",
   });
 
   const handleChange = (e) => {
@@ -26,6 +27,8 @@ function AddExpense() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const eColor = expenseTypesList.find((e) => e.text === expense.expenseType);
+    expense.color = eColor.color;
     dispatch(addExpense(expense));
     setExpense({
       id: uuidv4(),
@@ -44,8 +47,8 @@ function AddExpense() {
             id="options"
             value={expense.expenseType}
           >
-            {expenseTypesList.map((e) => (
-              <option value={e.value} key={e.key} name="adsf">
+            {expenseTypesList.map((e, i) => (
+              <option value={e.value} key={i} name="adsf">
                 {e.text}
               </option>
             ))}

@@ -36,7 +36,6 @@ export const Button = styled.button`
 `;
 
 export const FormInput = styled.div`
-  display: grid;
   display: flex;
   align-items: center;
   padding: 1rem 2rem;

@@ -70,3 +70,32 @@ export const MenuItem = styled.li`
   height: 100%;
   transition: all 0.2s ease;
 `;
+
+export const MenuLink = styled(Link)`
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 2rem;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  height: 100%;
+  transition: all 0.2s ease;
+
+  &:hover {
+    color: #e38b06;
+    transform: traslateY(-3rem);
+  }
+  &:active {
+    transform: traslateY(3rem);
+    color: #e38b06;
+  }
+
+  @media only screen and (max-width: 1000px) {
+    display: block;
+    padding: 3rem;
+    text-align: center;
+    transition: all 0.2s ease;
+  }
+`;

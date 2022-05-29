@@ -53,7 +53,7 @@ function ExpenseDetail({ expense }) {
               <Form onSubmit={onSubmitHandle}>
                 <FormInput>
                   <Input
-                    value={exp.amount}
+                    value={exp.amount.toLocaleString()}
                     placeholder="Spent..."
                     name="amount"
                     type="number"
@@ -70,7 +70,7 @@ function ExpenseDetail({ expense }) {
             <>
               <ListContent>
                 <h3>{expense.expenseType}</h3>
-                <h3>{expense.amount}</h3>
+                <h3>₹ {expense.amount.toLocaleString()}</h3>
               </ListContent>
               <ListActions>
                 <ActionButton onClick={onEditHandle}>

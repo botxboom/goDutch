@@ -6,6 +6,8 @@ import {
   NavLogo,
   MenuIcon,
   MenuItem,
+  Menu,
+  MenuLink,
 } from "./styles/Navbar.Style";
 
 function NavBar({ total }) {
@@ -19,8 +21,11 @@ function NavBar({ total }) {
         <MenuIcon onClick={handleClick}>
           {click ? <BiX /> : <BiMenu />}
         </MenuIcon>
-
-        <MenuItem>Total Expenses: {total} INR</MenuItem>
+        <Menu>
+          <MenuItem>
+            <MenuLink to="/insights">Insights</MenuLink>
+          </MenuItem>
+        </Menu>
       </NavbarContainer>
     </Nav>
   );

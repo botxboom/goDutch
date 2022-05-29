@@ -1,8 +1,16 @@
 export const expenseTypesList = [
-  { key: 1, value: "Travel", text: "Travel" },
-  { key: 2, value: "Groceries", text: "Groceries" },
-  { key: 3, value: "Recharges", text: "Recharges" },
-  { key: 4, value: "Food & Beverages", text: "Food & Beverages" },
-  { key: 5, value: "Health & Fitness", text: "Health & Fitness" },
-  { key: 6, value: "Miscellaneous", text: "Miscellaneous" },
+  { value: "Travel", text: "Travel", color: "#36A2EB" },
+  { value: "Groceries", text: "Groceries", color: "#FF6384" },
+  { value: "Recharges", text: "Recharges", color: "#4BC0C0" },
+  {
+    value: "Food & Beverages",
+    text: "Food & Beverages",
+    color: "#ffcd56",
+  },
+  {
+    value: "Health & Fitness",
+    text: "Health & Fitness",
+    color: "#FF9F40",
+  },
+  { value: "Miscellaneous", text: "Miscellaneous", color: "#E53A64" },
 ];
