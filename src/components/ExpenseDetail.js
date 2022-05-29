@@ -43,7 +43,7 @@ function ExpenseDetail({ expense }) {
   return (
     <>
       <ListContainer>
-        <ListCard>
+        <ListCard style={{ backgroundColor: expense.color }}>
           {clicked ? (
             <>
               <ListContent>
@@ -53,7 +53,7 @@ function ExpenseDetail({ expense }) {
               <Form onSubmit={onSubmitHandle}>
                 <FormInput>
                   <Input
-                    value={exp.amount.toLocaleString()}
+                    value={exp.amount}
                     placeholder="Spent..."
                     name="amount"
                     type="number"
