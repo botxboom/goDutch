@@ -11,7 +11,7 @@ function App() {
       <NavBar />
       <GlobalStyles />
       <Routes>
-        <Route default exact path="/" element={<Homepage />} />
+        <Route default path="/" element={<Homepage />} />
         <Route exact path="/insights" element={<Insights />} />
       </Routes>
     </Router>

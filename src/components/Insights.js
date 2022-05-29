@@ -32,7 +32,7 @@ function Insights() {
       ],
     },
     options: {
-      cutout: 200,
+      cutout: 150,
       plugins: {
         legend: {
           position: "top",
@@ -64,8 +64,12 @@ function Insights() {
             const percentage = (e.amount / subTotal) * 100;
             return (
               <h3 key={e.id}>
-                {e.expenseType} : {Math.round(percentage)}%
+                {e.expenseType}: {Math.round(percentage)}%
               </h3>
+              // <tr key={e.id}>
+              //   <td>{e.expenseType}: </td>
+              //   <td> </td>
+              // </tr>
             );
           })}
         </ChartInfo>

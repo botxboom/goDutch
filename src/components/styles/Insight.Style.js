@@ -24,16 +24,18 @@ export const ColorBox = styled.div`
 
 export const Stats = styled.div`
   display: flex;
-  justify-content: space-between;
-  margin-left: 50rem;
-  margin-right: 50rem;
+  justify-content: center;
   margin-top: 5rem;
+  align-items: center;
+  margin-left: 30rem;
+  margin-right: 30rem;
+  gap: 10rem;
 `;
 
 export const ChartComponent = styled.div`
   display: flex;
-  height: 50rem;
-  width: 50rem;
+  width: 40rem;
+  height: 40rem;
 `;
 
 export const ChartInfo = styled.div`
