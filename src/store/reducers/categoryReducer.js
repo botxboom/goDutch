@@ -60,7 +60,7 @@ const categoryReducer = (state = initCatState, action) => {
       };
 
     case REMOVE_CATEGORY:
-      const categories = state.list.filter((e) => e.id !== action.id);
+      const categories = state.list.filter((e) => e._id !== action.id);
 
       return {
         list: categories,
