@@ -1,6 +1,7 @@
 import { v4 as uuidv4 } from "uuid";
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
 import { addExpense } from "../store/actions/expenseActions";
 import {
   Button,
@@ -10,10 +11,13 @@ import {
   FormInput,
   Input,
 } from "./styles/AddExpense.Style";
-import { expenseTypesList } from "../Helpers/Helper";
+import { setCategories } from "../store/actions/categoryActions";
+
+const getListURL = "http://127.0.0.1:8080/api/getList";
 
 function AddExpense() {
   const dispatch = useDispatch();
+  const { list } = useSelector((store) => store.categoryReducer);
   const [expense, setExpense] = useState({
     id: uuidv4(),
     expenseType: "Travel",
@@ -21,13 +25,23 @@ function AddExpense() {
     color: "",
   });
 
+  useEffect(() => {
+    axios
+      .get(getListURL)
+      .then((res) => {
+        console.log(res.data);
+        dispatch(setCategories(res.data));
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
   const handleChange = (e) => {
     setExpense({ ...expense, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const eColor = expenseTypesList.find((e) => e.text === expense.expenseType);
+    const eColor = list.find((e) => e.value === expense.expenseType);
     expense.color = eColor.color;
     dispatch(addExpense(expense));
     setExpense({
@@ -47,9 +61,9 @@ function AddExpense() {
             id="options"
             value={expense.expenseType}
           >
-            {expenseTypesList.map((e, i) => (
+            {list.map((e, i) => (
               <option value={e.value} key={i} name="adsf">
-                {e.text}
+                {e.value}
               </option>
             ))}
           </DropDownSelect>

@@ -4,6 +4,7 @@ import GlobalStyles from "./GlobalStyles";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Insights from "./components/Insights";
 import NavBar from "./components/NavBar";
+import CreateType from "./components/CreateType";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route default path="/" element={<Homepage />} />
         <Route exact path="/insights" element={<Insights />} />
+        <Route exact path="/create" element={<CreateType />} />
       </Routes>
     </Router>
   );

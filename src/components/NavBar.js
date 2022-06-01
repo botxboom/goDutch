@@ -18,6 +18,9 @@ function NavBar() {
             <MenuLink to="/">Home</MenuLink>
           </MenuItem>
           <MenuItem>
+            <MenuLink to="/create">Create</MenuLink>
+          </MenuItem>
+          <MenuItem>
             <MenuLink to="/insights">Insights</MenuLink>
           </MenuItem>
         </Menu>

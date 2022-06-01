@@ -1,8 +1,8 @@
 import { applyMiddleware, createStore, compose } from "redux";
-import expenseReducer from "./reducers/expenseReducer";
+import reducers from "./reducers/reducers";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const store = createStore(expenseReducer, composeEnhancers(applyMiddleware()));
+const store = createStore(reducers, composeEnhancers(applyMiddleware()));
 
 export default store;

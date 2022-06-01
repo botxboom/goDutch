@@ -5,7 +5,7 @@ import ExpenseList from "./ExpenseList";
 import { PageContainer } from "./styles/AddExpense.Style";
 
 function Homepage() {
-  const { expenses } = useSelector((store) => store);
+  const { expenses } = useSelector((store) => store.expenseReducer);
 
   return (
     <PageContainer>

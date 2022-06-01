@@ -13,7 +13,7 @@ import { useSelector } from "react-redux";
 Chart.register(ArcElement);
 
 function Insights() {
-  const { expenses, subTotal } = useSelector((store) => store);
+  const { expenses, subTotal } = useSelector((store) => store.expenseReducer);
 
   const bgColors = expenses.map((e) => e.color);
   const chartData = expenses.map((e) => e.amount);
@@ -45,10 +45,10 @@ function Insights() {
     <>
       <DescriptionContainer>
         <Description>
-          {expenses.map((e) => (
+          {expenses.map((e, k) => (
             <>
-              <ColorBox key={e.id} style={{ backgroundColor: e.color }} />
-              <span key={e.expenseType}>{e.expenseType}</span>
+              <ColorBox style={{ backgroundColor: e.color }} />
+              <span>{e.expenseType}</span>
             </>
           ))}
         </Description>
@@ -60,11 +60,10 @@ function Insights() {
           <Doughnut {...graphConfig}></Doughnut>
         </ChartComponent>
         <ChartInfo>
-          {expenses.map((e) => {
-            const percentage = (e.amount / subTotal) * 100;
+          {expenses.map((e, k) => {
             return (
-              <h3 key={e.id}>
-                {e.expenseType}: {Math.round(percentage)}%
+              <h3 key={k}>
+                {e.expenseType}: {Math.round((e.amount / subTotal) * 100)}%
               </h3>
               // <tr key={e.id}>
               //   <td>{e.expenseType}: </td>
