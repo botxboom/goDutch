@@ -10,7 +10,6 @@ const addExpense = (expense) => {
 };
 
 const removeExpense = (expense, amount = 0) => {
-  console.log(expense);
   return { type: REMOVE_EXPENSE, expense, amount };
 };
 

@@ -34,7 +34,6 @@ const expenseReducer = (state = initState, action) => {
       }
 
     case "REMOVE_EXPENSE":
-      console.log(action.expense);
       const newExpense = state.expenses.filter(
         (expense) =>
           expense.expenseType !==

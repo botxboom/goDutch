@@ -29,7 +29,6 @@ function AddExpense() {
     axios
       .get(getListURL)
       .then((res) => {
-        console.log(res.data);
         dispatch(setCategories(res.data));
       })
       .catch((err) => console.log(err));

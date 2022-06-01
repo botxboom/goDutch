@@ -53,7 +53,6 @@ const categoryReducer = (state = initCatState, action) => {
       };
 
     case SET_CATEGORIES:
-      console.log(action.categories);
       return {
         ...state,
         list: action.categories,
