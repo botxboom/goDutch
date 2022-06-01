@@ -34,12 +34,18 @@ const expenseReducer = (state = initState, action) => {
       }
 
     case "REMOVE_EXPENSE":
+      console.log(action.expense);
       const newExpense = state.expenses.filter(
-        (expense) => expense.id !== action.expense.id
+        (expense) =>
+          expense.expenseType !==
+          (action.expense.expenseType || action.expense.value)
       );
+
+      const amountToSub =
+        action.amount === 0 ? action.expense.amount : action.amount;
       return {
         expenses: newExpense,
-        subTotal: state.subTotal - action.expense.amount,
+        subTotal: state.subTotal - amountToSub,
       };
 
     case "UPDATE_EXPENSE":
@@ -53,6 +59,10 @@ const expenseReducer = (state = initState, action) => {
         ...state,
       };
 
+    case "REFRESH":
+      return {
+        ...state,
+      };
     default:
       return state;
   }

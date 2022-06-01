@@ -1,15 +1,25 @@
-import { ADD_EXPENSE, REMOVE_EXPENSE, UPDATE_EXPENSE } from "./actions";
+import {
+  ADD_EXPENSE,
+  REMOVE_EXPENSE,
+  UPDATE_EXPENSE,
+  REFRESH_EXPENSE,
+} from "./actions";
 
 const addExpense = (expense) => {
   return { type: ADD_EXPENSE, expense };
 };
 
-const removeExpense = (expense) => {
-  return { type: REMOVE_EXPENSE, expense };
+const removeExpense = (expense, amount = 0) => {
+  console.log(expense);
+  return { type: REMOVE_EXPENSE, expense, amount };
 };
 
 const updateExpense = (expense) => {
   return { type: UPDATE_EXPENSE, expense };
 };
 
-export { addExpense, removeExpense, updateExpense };
+const refreshExpense = () => {
+  return { type: REFRESH_EXPENSE };
+};
+
+export { addExpense, removeExpense, updateExpense, refreshExpense };

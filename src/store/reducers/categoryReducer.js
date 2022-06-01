@@ -4,40 +4,40 @@ import {
   SET_CATEGORIES,
 } from "../actions/actions";
 
-const initCatState = {
+export const initCatState = {
   list: [
     {
-      _id: "6295ae0a9dbdf4a931c55b3e",
-      value: "Travel",
-      color: "#36A2EB",
-      __v: 0,
-    },
-    {
-      _id: "6295ae1d9dbdf4a931c55b40",
-      value: "Groceries",
-      color: "#FF6384",
-      __v: 0,
-    },
-    {
-      _id: "6295ae299dbdf4a931c55b42",
-      value: "Recharges",
-      color: "#4BC0C0",
-      __v: 0,
-    },
-    {
-      _id: "6295ae379dbdf4a931c55b44",
-      value: "Food & Beverages",
-      color: "#ffcd56",
-      __v: 0,
-    },
-    {
-      _id: "6295ae439dbdf4a931c55b46",
+      _id: "6297469c60bc0485931bc722",
       value: "Health & Fitness",
       color: "#FF9F40",
       __v: 0,
     },
     {
-      _id: "6295ae4f9dbdf4a931c55b48",
+      _id: "629746a360bc0485931bc725",
+      value: "Food & Beverages",
+      color: "#ffcd56",
+      __v: 0,
+    },
+    {
+      _id: "629746a960bc0485931bc728",
+      value: "Recharges",
+      color: "#4BC0C0",
+      __v: 0,
+    },
+    {
+      _id: "629746b060bc0485931bc72b",
+      value: "Groceries",
+      color: "#FF6384",
+      __v: 0,
+    },
+    {
+      _id: "629746b860bc0485931bc72e",
+      value: "Travel",
+      color: "#36A2EB",
+      __v: 0,
+    },
+    {
+      _id: "629747701601de72672574ff",
       value: "Miscellaneous",
       color: "#E53A64",
       __v: 0,

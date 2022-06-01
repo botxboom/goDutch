@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Button } from "../GlobalStyles";
 import removeImage from "../images/remove.svg";
 import { addCategory, removeCategory } from "../store/actions/categoryActions";
+import { removeExpense } from "../store/actions/expenseActions";
+import { initCatState } from "../store/reducers/categoryReducer";
 import { Form, FormContent, FormInput, Input } from "./styles/AddExpense.Style";
 import {
   ActionButton,
@@ -19,6 +21,7 @@ const removeTypeURL = "http://localhost:8080/api/deleteType";
 function CreateType() {
   const dispatch = useDispatch();
   const { list } = useSelector((store) => store.categoryReducer);
+  const { expenses } = useSelector((store) => store.expenseReducer);
   const [eType, setEType] = useState("");
 
   const handleChange = (e) => {
@@ -40,13 +43,22 @@ function CreateType() {
   };
 
   const handleDelete = (e) => {
-    axios.post(removeTypeURL, { params: { id: e._id } }).then((res) => {
-      if (res.data.deleted !== null) {
-        dispatch(removeCategory(e._id));
-      } else {
-        alert("something went wrong");
-      }
-    });
+    const found = initCatState.list.find((l) => l._id === e._id);
+    if (found) {
+      alert("cannot delete this item");
+    } else {
+      axios.post(removeTypeURL, { params: { _id: e._id } }).then((res) => {
+        if (res.data.deleted) {
+          dispatch(removeCategory(e._id));
+          const getExpense = expenses.find(
+            (exp) => exp.expenseType === e.value
+          );
+          dispatch(removeExpense(e, getExpense.amount));
+        } else {
+          alert("something went wrong");
+        }
+      });
+    }
   };
   return (
     <>
