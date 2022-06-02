@@ -53,7 +53,7 @@ function CreateType() {
           const getExpense = expenses.find(
             (exp) => exp.expenseType === e.value
           );
-          dispatch(removeExpense(e, getExpense.amount));
+          getExpense && dispatch(removeExpense(e, getExpense.amount));
         } else {
           alert("something went wrong");
         }
