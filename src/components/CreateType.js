@@ -15,8 +15,8 @@ import {
   ListContent,
 } from "./styles/ExpenseDetails.Style";
 
-const createTypeURL = "http://localhost:8080/api/createType";
-const removeTypeURL = "http://localhost:8080/api/deleteType";
+const createTypeURL = "https://ispent.herokuapp.com/api/createType";
+const removeTypeURL = "https://ispent.herokuapp.com/api/deleteType";
 
 function CreateType() {
   const dispatch = useDispatch();

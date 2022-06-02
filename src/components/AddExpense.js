@@ -13,7 +13,7 @@ import {
 } from "./styles/AddExpense.Style";
 import { setCategories } from "../store/actions/categoryActions";
 
-const getListURL = "http://127.0.0.1:8080/api/getList";
+const getListURL = "https://ispent.herokuapp.com/api/getList";
 
 function AddExpense() {
   const dispatch = useDispatch();
